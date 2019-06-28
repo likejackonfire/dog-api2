@@ -6,16 +6,13 @@ const store = {
 }
 
 function watchForm(){
-    // // this function listens to the input element in the html. 
-    // default is set to three, user can choose between 1 and 50  
-   
     $('form').on('submit', function(event){
         event.preventDefault();
         if($('.number-value').val()>50){
             return alert('Please choose a valid number');
         }
         store.number= $('.number-value').val();
-        console.log(store.number);
+        //console.log(store.number);
         getDogImages(store.number);
     })
 }
@@ -29,18 +26,18 @@ function getDogImages(num){
 
 function makeDogArray(responseJson){
     store.dogArray = responseJson.message;
-    console.log(store.dogArray);
+    //console.log(store.dogArray);
 }
 
 function makeHtml(){
     let newArr=[];
-    for(let x = 0; x < store.dogArray.length; x++){
-        newArr.push(`<img src="${store.dogArray[x]}" class="results">`)
+    for(let i = 0; i < store.dogArray.length; i++){
+        newArr.push(`<img src="${store.dogArray[i]}" class="results">`)
 }
    return newArr;
 }    
 
-function displayResults(responseJson){
+function displayResults(){
     $('.results').replaceWith(makeHtml())}
 
 
